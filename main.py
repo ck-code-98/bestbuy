@@ -10,26 +10,29 @@ product_list = [ products.Product("MacBook Air M2", price=1450, quantity=100),
 best_buy = store.Store(product_list)
 
 
-def list_all_products(best_buy):
+def list_all_products(shop):
+    """ Prints a list of all available products """
     print("------")
-    active_products = best_buy.get_all_products()
+    active_products = shop.get_all_products()
     for index, product in enumerate(active_products):
         print(f"{index + 1}. ", end="")
         product.show()
     print("------\n")
 
 
-def show_total_amount(best_buy):
+def show_total_amount(shop):
+    """ Shows the total amount of items in the store """
     total_amount = 0
-    list_of_products = best_buy.get_all_products()
+    list_of_products = shop.get_all_products()
     for product in list_of_products:
         total_amount += product.get_quantity()
     print(f"Total of {total_amount} items in store\n")
 
 
-def make_order(best_buy):
-    list_all_products(best_buy)
-    available_products = best_buy.get_all_products()
+def make_order(shop):
+    """ Asks user for products and amounts to order, calculates total amount and changes available amounts """
+    list_all_products(shop)
+    available_products = shop.get_all_products()
     print("When you want to finish order, enter empty text.")
     cart = []
 
@@ -68,12 +71,14 @@ def make_order(best_buy):
     print(f"********\nOrder made! Total payment: ${total_price}\n")
 
 
-def exit_program(best_buy):
+def exit_program():
+    """ Ends the application """
     print("Thank you for your purchase!\n")
     sys.exit()
 
 
-def start(best_buy):
+def start(shop):
+    """ Shows menu and asks user to choose one of the functions """
     menu_functions = {
         1: list_all_products,
         2: show_total_amount,
@@ -85,11 +90,12 @@ def start(best_buy):
         function_of_choice = int(input("Please choose a number: "))
         if not isinstance(function_of_choice, int) or not function_of_choice in [1, 2, 3, 4]:
             raise KeyError
-        menu_functions[function_of_choice](best_buy)
+        menu_functions[function_of_choice](shop)
+        return start(shop)
 
     except KeyError:
         print("Invalid input. Program expects a number from 1 to 4!")
-        return start(best_buy)
+        return start(shop)
 
 
 def main():
