@@ -71,7 +71,7 @@ def make_order(shop):
     print(f"********\nOrder made! Total payment: ${total_price}\n")
 
 
-def exit_program():
+def exit_program(shop):
     """ Ends the application """
     print("Thank you for your purchase!\n")
     sys.exit()
@@ -91,7 +91,7 @@ def start(shop):
         if not isinstance(function_of_choice, int) or not function_of_choice in [1, 2, 3, 4]:
             raise KeyError
         menu_functions[function_of_choice](shop)
-        return start(shop)
+        return None
 
     except KeyError:
         print("Invalid input. Program expects a number from 1 to 4!")
