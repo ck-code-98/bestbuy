@@ -1,16 +1,3 @@
-# github
-
-class Product:
-    def __init__(self, name, price):
-        self.name = name
-        self.price = price
-
-class Store:
-    def __init__(self):
-        print("Store has been created")
-
-
-
 """
  Store Menu
    ----------
@@ -51,3 +38,4 @@ Which product # do you want? 1
 What amount do you want? 1
 Product added to list!
 """
+
