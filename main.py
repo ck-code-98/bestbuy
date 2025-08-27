@@ -78,11 +78,9 @@ def start(best_buy):
         1: list_all_products,
         2: show_total_amount,
         3: make_order,
-        4: exit_program
-    }
+        4: exit_program}
 
-    print(
-        "Store Menu\n----------\n1. List all products in store\n2. Show total amount in store\n3. Make an order\n4. Quit")
+    print("Store Menu\n----------\n1. List all products in store\n2. Show total amount in store\n3. Make an order\n4. Quit")
     try:
         function_of_choice = int(input("Please choose a number: "))
         if not isinstance(function_of_choice, int) or not function_of_choice in [1, 2, 3, 4]:
